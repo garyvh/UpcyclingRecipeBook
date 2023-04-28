@@ -1,16 +1,19 @@
-.myNav{
+.searchHeader{
     display: flex;
     padding-top:30px;
     padding-left:30px;
     align-items: center;
-    gap:70px;
-    min-width: 1000px;
+    gap:30px;
     /* justify-content: center; */
+    width: 90%;
 }
 
-.myNav h1{
-    font-weight: 500;
-}
 .logo{
     position:static;
+}
+.searchInput{
+    height: 50px;
+    width: 100%;
+    border: solid grey;
+    border-radius: 30px;
 }
