@@ -1,0 +1,12 @@
+.myNav{
+    display: flex;
+    padding-top:30px;
+    padding-left:30px;
+    align-items: center;
+    gap:70px;
+    min-width: 1000px;
+    /* justify-content: center; */
+}
+nav h1{
+    font-weight: 500;
+}
