@@ -5,12 +5,19 @@ const cors = require('cors')
 const port = 3000
 const app = express()
 
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = `${process.env.dbUserName}:${process.env.dbUserPassword}@${process.env.dbClusterName}.${process.env.dbMongoId}.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const uri = `mongodb+srv://${process.env.dbUserName}:${process.env.dbUserPassword}@${process.env.dbClusterName}.${process.env.dbMongoId}.mongodb.net/?retryWrites=true&w=majority`;
 
 
+console.log(uri);
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 
 // for parsing application/json requests
@@ -42,12 +49,12 @@ const recepieList = [
       const collection = client.db(process.env.dbName).collection(process.env.dbCollectionName)
       
       // Create a text index on the 'name' field
-      await collection.createIndex({ name: "text" });
+      //await collection.createIndex({ name: "text" });
   
       const result = await collection.find(
-        { $text: { $search: req.params.itemname } }, 
+       {name: req.params.itemname  }, 
         { projection: { _id: 0 } }
-      )
+      ).toArray()
       console.log(result)
       res.status(200).json(result)
   
@@ -56,8 +63,7 @@ const recepieList = [
       res.sendStatus(500)
   
     } finally {
-      client.close()
-    }
+      setTimeout(() => {client.close()}, 1500)    }
   });
 
 app.listen(port, () => {
