@@ -5,7 +5,7 @@
     position: relative;
 }
 
-img {
+#gallery img {
     border-radius: 20px;
     position: absolute;
     border: solid;
