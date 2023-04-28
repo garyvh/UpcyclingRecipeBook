@@ -1,0 +1,51 @@
+#gallery {
+    background-color: grey;
+    align-content: center;
+    width: 1200px;
+    position: relative;
+}
+
+img {
+    border-radius: 20px;
+    position: absolute;
+    border: solid;
+}
+
+#farLeftImg {
+    left: 100px;
+    height: 200px;
+    width: 200px;
+    top: 50px;
+    z-index: 2;
+}
+
+#leftImg {
+    left: 200px;
+    height: 250px;
+    width: 250px;
+    top: 25px;
+    z-index: 5;
+}
+
+#centerImg {
+    left: 300px;
+    height: 300px;
+    width: 300px;
+    z-index: 10;
+}
+
+#rightImg {
+    left: 450px;
+    height: 250px;
+    width: 250px;
+    top: 25px;
+    z-index: 5;
+}
+
+#farRightImg {
+    left: 600px;
+    height: 200px;
+    width: 200px;
+    top: 50px;
+    z-index: 2;
+}

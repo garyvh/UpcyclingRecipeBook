@@ -1,5 +1,5 @@
 import logoImage from "../images/UpLogo.PNG";
-import "./TheHeader.css";
+import "../stylesheets/TheHeader.css";
 function TheHeader() {
     return (
         <nav className="myNav">
