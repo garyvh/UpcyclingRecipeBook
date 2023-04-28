@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const express = require('express') 
 const cors = require('cors') 
 const port = 3000
@@ -5,11 +7,11 @@ const app = express()
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-//const uri = "mongodb+srv://chakerbaloch:5200North@cluster0.tmhmuor.mongodb.net/?retryWrites=true&w=majority";
+const uri = `${process.env.dbUserName}:${process.env.dbUserPassword}@${process.env.dbClusterName}.${process.env.dbMongoId}.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-//const databaseName = ;
-//const collectionName = ;
+
+
 
 // for parsing application/json requests
 app.use(express.json())
@@ -17,3 +19,47 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // for allowing different domain origins to make requests to this API
 app.use(cors())
+
+const recepieList = [
+    {
+      name: 'Mason Jar Lanterns',
+      link: 'https://www.makelifelovely.com/diy-mason-jar-lanterns/'
+    },
+    {
+      name: 'Mason Jar Terrarium',
+      link: 'https://www.huffpost.com/entry/diy-mason-jar-terrarium-t_b_8210924'
+    },
+    {
+      name: 'Wine Bottle Lights',
+      link: 'https://diyprojects.com/create-wine-bottle-lights/'
+    }
+  ]
+
+  //Get method to retrieve a recipe
+  app.get('/recipeList/retrieve/:itemname', async (req, res) => {
+    try {
+      await client.connect()
+      const collection = client.db(process.env.dbName).collection(process.env.dbCollectionName)
+      
+      // Create a text index on the 'name' field
+      await collection.createIndex({ name: "text" });
+  
+      const result = await collection.find(
+        { $text: { $search: req.params.itemname } }, 
+        { projection: { _id: 0 } }
+      )
+      console.log(result)
+      res.status(200).json(result)
+  
+    } catch (error) {
+      console.log(error)
+      res.sendStatus(500)
+  
+    } finally {
+      client.close()
+    }
+  });
+
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
+});
