@@ -11,9 +11,26 @@
 .logo{
     position:static;
 }
-.searchInput{
+.searchDiv{
+    align-items: center;
+    display: flex;
     height: 50px;
     width: 100%;
     border: solid grey;
     border-radius: 30px;
+}
+.searchInput{
+    border-radius: 30px;
+    border: none;
+    height: 100%;
+    width: 90%;
+}
+.searchInput:focus {
+    border: none;
+    outline: none;
+}
+.searchIcon{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: gray;
 }
