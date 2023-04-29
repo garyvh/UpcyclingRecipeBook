@@ -1,0 +1,34 @@
+#homepage .myNav {
+    margin-bottom: 100px;
+}
+
+#homepage #hero-section {
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+
+#homepage footer {
+    position: absolute;
+    top: calc(100vh - 40px);
+    width: 100vw;
+    height: 40px;
+    background-color: #bbb;;
+}
+
+#sideBarContainer {
+    left: 80vw;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+    position: absolute;
+    z-index: -2;
+    overflow: hidden;
+}
+
+#sideBarCircle {
+    height: 100vh;
+    width: 1000px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}

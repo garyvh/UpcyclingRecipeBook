@@ -5,8 +5,8 @@
     position: relative;
 }
 
-img {
-    border-radius: 20px;
+#gallery > img {
+    border-radius: 30px;
     position: absolute;
     border: solid;
 }
