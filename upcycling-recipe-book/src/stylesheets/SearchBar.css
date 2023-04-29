@@ -1,0 +1,36 @@
+.searchHeader{
+    display: flex;
+    padding-top:30px;
+    padding-left:30px;
+    align-items: center;
+    gap:30px;
+    /* justify-content: center; */
+    width: 90%;
+}
+
+.logo{
+    position:static;
+}
+.searchDiv{
+    align-items: center;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    border: solid grey;
+    border-radius: 30px;
+}
+.searchInput{
+    border-radius: 30px;
+    border: none;
+    height: 100%;
+    width: 90%;
+}
+.searchInput:focus {
+    border: none;
+    outline: none;
+}
+.searchIcon{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: gray;
+}

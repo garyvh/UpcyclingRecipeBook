@@ -12,3 +12,6 @@ nav h1{
     margin-left: 30px;
     font-weight: 500;
 }
+.logo{
+    position:static;
+}
