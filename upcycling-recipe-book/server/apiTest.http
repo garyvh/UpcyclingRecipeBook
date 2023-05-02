@@ -1,5 +1,8 @@
-GET http://localhost:3000/recipeList/retrieve/Mason%20Jar%20Lanterns HTTP/1.1
+GET http://localhost:3000/recipeList/retrieve/MasonJarLanterns HTTP/1.1
 
 ###
 
-GET http://localhost:3000/recipeList/retrieve/Mason%20Jar%20Terrarium HTTP/1.1
+GET http://localhost:3000/recipeList/retrieve/WineBottleLights HTTP/1.1
+
+###
+GET http://localhost:3000/recipeList/retrieve/PillowOutofaShirt HTTP/1.1

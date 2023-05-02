@@ -20,6 +20,7 @@ const client = new MongoClient(uri, {
 });
 
 
+
 // for parsing application/json requests
 app.use(express.json())
 // for parsing application/x-www-form-urlencoded requests
@@ -52,7 +53,7 @@ const recepieList = [
       //await collection.createIndex({ name: "text" });
   
       const result = await collection.find(
-       {name: req.params.itemname  }, 
+       {title: req.params.itemname  }, 
         { projection: { _id: 0 } }
       ).toArray()
       console.log(result)
@@ -66,6 +67,5 @@ const recepieList = [
       setTimeout(() => {client.close()}, 1500)    }
   });
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+// Start Express server to listen for API connections
+app.listen(port, () => console.log(`API listening at http://localhost:${port}/`))
