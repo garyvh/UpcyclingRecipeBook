@@ -5,14 +5,25 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, {useState} from "react";
 
 function SearchBar() {
+    const BACKEND_PATH = "/";
+
     const [textValue, setTextValue] = useState("");
 
     function inputChanged(e) {
-        setTextValue(e.target.value);
+        setTextValue(parseToBackend(e.target.value));
     }
 
-    function parseString(str) {
-        
+    async function fetchResults() {
+        try {
+            let result = await fetch(BACKEND_PATH);
+            let obj = await result.json();
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
+    function parseToBackend(str) {
+        return str.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, "");
     }
 
     return (
