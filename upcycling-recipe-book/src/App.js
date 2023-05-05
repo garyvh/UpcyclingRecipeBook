@@ -3,8 +3,8 @@ import SearchPage from "./components/SearchPage";
 function App() {
   return (
     <div>
-      <Homepage></Homepage>
-      {/* <SearchPage/> */}
+      {/* <Homepage></Homepage> */}
+      <SearchPage/>
     </div>
   );
 }
