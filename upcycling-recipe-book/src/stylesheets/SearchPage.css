@@ -1,0 +1,7 @@
+.searchPageBody{
+    margin: auto;
+}
+.searchPageHeroDiv{
+    display: flex;
+    gap: 20px;
+}

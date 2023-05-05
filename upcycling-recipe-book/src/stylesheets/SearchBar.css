@@ -1,7 +1,7 @@
 .searchHeader{
     display: flex;
-    padding-top:30px;
-    padding-left:30px;
+    padding-top:60px;
+    padding-left:60px;
     align-items: center;
     gap:30px;
     /* justify-content: center; */
@@ -23,7 +23,7 @@
     border-radius: 30px;
     border: none;
     height: 100%;
-    width: 90%;
+    width: 100%;
 }
 .searchInput:focus {
     border: none;

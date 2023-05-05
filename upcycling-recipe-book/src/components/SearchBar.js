@@ -3,7 +3,7 @@ import "../stylesheets/SearchBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, {useState} from "react";
-
+import { Link } from "react-router-dom";
 function SearchBar() {
     const BACKEND_PATH = "/";
 
@@ -28,7 +28,7 @@ function SearchBar() {
 
     return (
         <nav className="searchHeader">
-            <img src={logoImage} className="logo"/>
+            <Link to="/"><img src={logoImage} className="logo"/></Link>
             <div className="searchDiv">
                 <label htmlFor="searchInput" className="searchIcon"><FontAwesomeIcon icon={faMagnifyingGlass} /></label>
                 <input type="search" placeholder="Search For Recipes" className="searchInput" id="searchInput" onInput={inputChanged} />
