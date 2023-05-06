@@ -1,0 +1,19 @@
+.categoryDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.categoryImage{
+    border-radius: 50px;
+    border: solid gray;
+    min-width: 230px;
+    height: 200px;
+    text-align: center;
+    background-size:cover;
+}
+
+.categoryTitle{
+    font-weight: 400;
+}

@@ -1,6 +1,7 @@
 .searchHero{
-    border-radius: 40px;
+    border-radius: 50px;
     background-color: lightgrey;
-    width: 600px;
-    height: 200px;
+    width: 50%;
+    min-width: 700px;
+    height: 260px;
 }

@@ -39,7 +39,6 @@ function SearchBar() {
             <form className="searchDiv" onSubmit={handleSubmit}>
                 <label htmlFor="searchInput" className="searchIcon"><FontAwesomeIcon icon={faMagnifyingGlass} /></label>
                 <input type="search" placeholder="Search For Recipes" className="searchInput" id="searchInput" onInput={inputChanged} />
-                <button>Submit</button>
             </form>
         </nav>
     )
