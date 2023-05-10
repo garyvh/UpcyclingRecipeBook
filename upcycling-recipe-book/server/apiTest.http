@@ -1,4 +1,4 @@
-GET http://localhost:4000/recipeList/retrieve/Vintage HTTP/1.1
+GET http://localhost:4000/recipeList HTTP/1.1
 
 ###
 

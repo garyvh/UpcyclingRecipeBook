@@ -64,5 +64,23 @@ app.get('/recipeList/retrieve/:itemname', async (req, res) => {
   }
 });
 
+// Get all recipes
+app.get('/recipeList', async (req, res) => {
+  try {
+    await client.connect();
+    const collection = client.db(process.env.dbName).collection(process.env.dbCollectionName);
+    const results = await collection.find({},{ projection: { _id: 0 } }).toArray();
+
+    if (results.length === 0) {
+      return res.status(200).json({ message: 'No results found' });
+    }
+
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 // Start Express server to listen for API connections
 app.listen(port, () => console.log(`API listening at http://localhost:${port}/`))
