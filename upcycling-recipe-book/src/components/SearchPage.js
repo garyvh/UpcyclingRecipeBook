@@ -7,27 +7,26 @@ import clothingImage from "../images/clothing.jpg"
 import JewelryImage from "../images/bracelet.PNG"
 import DecorationImage from "../images/decoration.PNG"
 import FurnitureImage from "../images/lantern.jpg"
+import React, {useState} from "react";
 
 function SearchPage() {
+    const [items, setItems] = useState([]);
+
     return (
         <div>
-            <SearchBar/>
+            <SearchBar
+                items={items}
+                setItems={setItems}
+            />
             <div className="searchPageBody">
                 <div className="searchPageHeroDiv">
-                    <SearchHero></SearchHero>
-                    <SearchHero></SearchHero>
-                </div>
-                <h1 className="searchTitle">Category</h1>
-                <div className="searchCategories">
-                    <CategoryDiv className="category" categoryTitle="Clothing" image={clothingImage}></CategoryDiv>
-                    <CategoryDiv className="category" categoryTitle="Jewelry" image={JewelryImage}></CategoryDiv>
-                    <CategoryDiv className="category" categoryTitle="Decoration" image={DecorationImage}></CategoryDiv>
-                    <CategoryDiv className="category" categoryTitle="Furniture" image={FurnitureImage}></CategoryDiv>
-                    <CategoryDiv className="category" categoryTitle="Misc"></CategoryDiv>
-                    <CategoryDiv className="category" categoryTitle="Misc"></CategoryDiv>
-                </div>
-                <div className="searchRecommendations">
-                    <div className="product"></div>
+                    <SearchHero
+                        name={"Mason Jar Lanterns"}
+                        link={"https://www.makelifelovely.com/diy-mason-jar-lanterns/"}
+                        img={"https://www.makelifelovely.com/wp-content/uploads/2013/07/Mason-jar-lanterns.-These-pretty-diy-mason-jar-lights-are-easy-to-make-and-perfect-for-adding-ambience-to-a-party-bridal-shower-reception-or-wedding.jpg"}
+                        cite={"Photo by Make Life Lovely"}
+                        supplies={["Mason jars", "Spray Paint (Optional)", "Stretch lace ribbion", "Jute ribbion", "Wire coat hanger", "Wire cutters", "Glue", "Foam brush", "Glue gun"]}
+                    />
                 </div>
             </div>
         </div>

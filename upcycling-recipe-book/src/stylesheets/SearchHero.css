@@ -1,7 +1,39 @@
 .searchHero{
+    position: relative;
     border-radius: 50px;
     background-color: lightgrey;
-    width: 50%;
-    min-width: 700px;
+    /* background-image: url("https://images.cars.com/cldstatic/wp-content/uploads/kia-niro-hev-2023-08-exterior-front-angle-scaled.jpg"); */
+    background-repeat: no-repeat;
+    background-size: 260px 260px;
+    width: 600px;
     height: 260px;
+    align-content: center;
+}
+
+.item-title-container {
+    position: absolute;
+    background-color: white;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    bottom: 30px;
+    left: 30px;
+    font-weight: bolder;
+}
+
+.item-supplies {
+    position: absolute;
+    left: 275px;
+    width: 295px;
+    max-height: 200px;
+}
+
+.item-citation {
+    position: absolute;
+    left: 275px;
+    width: 295px;
+    bottom: 10px;
 }

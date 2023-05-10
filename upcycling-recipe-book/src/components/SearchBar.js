@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-function SearchBar() {
-    const BACKEND_PATH = "http://localhost:3500/recipeList/retrieve/";
+function SearchBar(props) {
+    const BACKEND_PATH = "http://localhost:4000/recipeList/retrieve/";
 
     const [textValue, setTextValue] = useState("");
 
@@ -26,7 +26,8 @@ function SearchBar() {
     async function handleSubmit(e) {
         e.preventDefault();
         let obj = await fetchResults();
-        console.log(obj);
+        // console.log(obj);
+        props.setItems(obj);
     }
 
     function parseToBackend(str) {
