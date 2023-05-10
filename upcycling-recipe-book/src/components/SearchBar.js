@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 function SearchBar() {
-    const BACKEND_PATH = "http://localhost:3500/recipeList/retrieve/";
+    const BACKEND_PATH = "http://localhost:4000/recipeList/retrieve/";
 
     const [textValue, setTextValue] = useState("");
 
@@ -17,6 +17,13 @@ function SearchBar() {
         try {
             let result = await fetch(BACKEND_PATH + textValue);
             let obj = await result.json();
+            if (Array.isArray(obj)) {
+                obj.forEach((result) => {
+                  if (result.title) {
+                    result.title = result.title.replace(/([a-z])([A-Z])/g, '$1 $2'); // add spaces between camel case words
+                  }
+                });
+            }
             return obj;
         } catch(err) {
             console.error(err);
@@ -30,7 +37,8 @@ function SearchBar() {
     }
 
     function parseToBackend(str) {
-        return str.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, "");
+        str = str.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, "");
+        return str;
     }
 
     return (
@@ -39,6 +47,8 @@ function SearchBar() {
             <form className="searchDiv" onSubmit={handleSubmit}>
                 <label htmlFor="searchInput" className="searchIcon"><FontAwesomeIcon icon={faMagnifyingGlass} /></label>
                 <input type="search" placeholder="Search For Recipes" className="searchInput" id="searchInput" onInput={inputChanged} />
+                
+
             </form>
         </nav>
     )

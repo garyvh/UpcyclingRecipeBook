@@ -1,8 +1,8 @@
-GET http://localhost:4000/recipeList/retrieve/tea HTTP/1.1
+GET http://localhost:4000/recipeList/retrieve/Vintage HTTP/1.1
 
 ###
 
 GET http://localhost:4000/recipeList/retrieve/can HTTP/1.1
 
 ###
-GET http://localhost:4000/recipeList/retrieve/scissors HTTP/1.1
+GET http://localhost:4000/recipeList/retrieve/jar HTTP/1.1
