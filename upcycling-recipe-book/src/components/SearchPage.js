@@ -12,6 +12,19 @@ import React, {useState} from "react";
 function SearchPage() {
     const [items, setItems] = useState([]);
 
+    const itemComps = [];
+    for (let i = 0; i < items.length; i++) {
+        itemComps.push(
+            <SearchHero 
+                name={items[i].title} 
+                link={items[i].tutorialLink}
+                img={items[i].image.link}
+                cite={items[i].image.credit}
+                supplies={items[i].supplies}
+            />
+        );
+    }
+
     return (
         <div>
             <SearchBar
@@ -19,7 +32,7 @@ function SearchPage() {
                 setItems={setItems}
             />
             <div className="searchPageBody">
-                <div className="searchPageHeroDiv">
+                {/* <div className="searchPageHeroDiv">
                     <SearchHero
                         name={"Mason Jar Lanterns"}
                         link={"https://www.makelifelovely.com/diy-mason-jar-lanterns/"}
@@ -27,7 +40,8 @@ function SearchPage() {
                         cite={"Photo by Make Life Lovely"}
                         supplies={["Mason jars", "Spray Paint (Optional)", "Stretch lace ribbion", "Jute ribbion", "Wire coat hanger", "Wire cutters", "Glue", "Foam brush", "Glue gun"]}
                     />
-                </div>
+                </div> */}
+                {itemComps}
             </div>
         </div>
     )

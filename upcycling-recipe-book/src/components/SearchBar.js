@@ -34,14 +34,23 @@ function SearchBar(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         let obj = await fetchResults();
-        // console.log(obj);
-        props.setItems(obj);
+        console.log(obj);
+        if (obj) {
+            props.setItems(obj);
+        }
     }
 
     function parseToBackend(str) {
         str = str.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()).replace(/\s/g, "");
         return str;
     }
+
+    // // useEffect, anything inside run once because if empty array as second param.
+    // useEffect(() => {
+    //     // Run! Like go get some data from an API.
+
+    //     // 
+    // }, []);
 
     return (
         <nav className="searchHeader">
