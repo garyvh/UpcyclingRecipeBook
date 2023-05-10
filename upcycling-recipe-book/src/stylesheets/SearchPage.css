@@ -1,17 +1,9 @@
-.searchPageBody{
+.searchPageBody {
     margin: auto;
     margin-top: 50px;
     width: 90%;
 }
-.searchPageHeroDiv{
+.searchPageHeroDiv {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
-/* .searchCategories{
-    display: flex;
-    gap: 20px;
-}
-.searchTitle{
-    font-size: 40px;
-    font-weight: 600;
-} */

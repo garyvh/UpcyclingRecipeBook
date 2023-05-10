@@ -6,13 +6,13 @@ function SearchHero(props) {
     }
 
     return (
-        <a href={props.link}>
+        <a className="itemLink" href={props.link}>
             <div className="searchHero" style={thisStyle}>
                 <div className="item-title-container">
                     {props.name}
                 </div>
                 <div className='item-supplies'>
-                    {props.supplies}
+                    {props.supplies.join(", ")}
                 </div>
                 <div className='item-citation'>
                     {props.cite}

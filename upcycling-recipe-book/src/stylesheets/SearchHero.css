@@ -1,3 +1,7 @@
+a {
+    color: inherit;
+}
+
 .searchHero{
     position: relative;
     border-radius: 50px;
@@ -29,6 +33,7 @@
     left: 275px;
     width: 295px;
     max-height: 200px;
+    font-size: 22px;
 }
 
 .item-citation {
@@ -36,4 +41,8 @@
     left: 275px;
     width: 295px;
     bottom: 10px;
+}
+
+.itemLink {
+    display: contents;
 }

@@ -2,7 +2,7 @@ import logoImage from "../images/UpLogo.PNG";
 import "../stylesheets/SearchBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
 function SearchBar(props) {
@@ -45,12 +45,19 @@ function SearchBar(props) {
         return str;
     }
 
-    // // useEffect, anything inside run once because if empty array as second param.
-    // useEffect(() => {
-    //     // Run! Like go get some data from an API.
-
-    //     // 
-    // }, []);
+    // useEffect, anything inside run once because if empty array as second param.
+    useEffect(() => {
+        // Run! Like go get some data from an API.
+        (async() => {
+            try {
+                let result = await fetch("http://localhost:4000/recipeList");
+                let obj = await result.json();
+                props.setItems(obj);
+            } catch(err) {
+                console.error(err);
+            }
+        })();
+    }, []);
 
     return (
         <nav className="searchHeader">
@@ -58,8 +65,6 @@ function SearchBar(props) {
             <form className="searchDiv" onSubmit={handleSubmit}>
                 <label htmlFor="searchInput" className="searchIcon"><FontAwesomeIcon icon={faMagnifyingGlass} /></label>
                 <input type="search" placeholder="Search For Recipes" className="searchInput" id="searchInput" onInput={inputChanged} />
-                
-
             </form>
         </nav>
     )
