@@ -2,6 +2,7 @@ import '../stylesheets/Homepage.css'
 import TheHeader from "./TheHeader";
 import Gallery from "./Gallery";
 import HeroSection from "./HeroSection";
+import BookSign from "./BookSign";
 
 function Homepage() {
     return (
@@ -12,6 +13,8 @@ function Homepage() {
             <TheHeader></TheHeader>
             <HeroSection></HeroSection>
             <Gallery></Gallery>
+            <BookSign></BookSign>
+
             <footer></footer>
         </div>
     )

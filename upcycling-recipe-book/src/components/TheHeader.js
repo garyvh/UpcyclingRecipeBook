@@ -7,9 +7,7 @@ function TheHeader() {
             <img src={logoImage} className="logo"/>
             <h1><Link to="/">Home</Link></h1>
             <h1><Link to="/SearchPage">Recipes</Link></h1>
-            <h1>Sign Up</h1>
-            <h1>Log In</h1>
-            <h1>Help</h1>
+            <h1><Link to="/HelpPage">Help</Link></h1>
         </nav>
     )
 }
