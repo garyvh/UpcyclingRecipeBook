@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express') 
 const cors = require('cors') 
+const Fuse = require('fuse.js');
 const port = 4000
 const app = express()
 
@@ -30,11 +31,14 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-//Get method to retrieve a recipe
+const Fuse = require('fuse.js');
+
 app.get('/recipeList/retrieve/:itemname', async (req, res) => {
   try {
     const itemName = req.params.itemname;
-    const query = {
+
+    // Create a $regex search query with the search term
+    const regexQuery = {
       $or: [
         { title: { $regex: new RegExp(itemName, 'i') } },
         {
@@ -47,40 +51,35 @@ app.get('/recipeList/retrieve/:itemname', async (req, res) => {
         }
       ]
     };
-    
+
+    // Retrieve the data from the database
     await client.connect();
     const collection = client.db(process.env.dbName).collection(process.env.dbCollectionName);
+    const data = await collection.find(regexQuery, { projection: { _id: 0 } }).toArray();
 
-    const results = await collection.find(query, { projection: { _id: 0 } }).limit(10).toArray();
+    // Set options for Fuse.js
+    const options = {
+      keys: ['title', 'supplies'], // the fields to search in
+      threshold: 0.4, // the minimum score required for a result to be considered a match (adjust as needed)
+      includeScore: true // include the score in the results
+    };
 
-    if (results.length === 0) {
-      return res.status(200).json({ message: 'No results found' });
-    }
+    // Create a new instance of Fuse with the data to be searched
+    const fuse = new Fuse(data, options);
 
-    res.json(results);
+    // Search for items that match the query
+    const results = fuse.search(itemName);
+
+    // Extract the items from the results (ignoring the scores)
+    const items = results.map(result => result.item);
+
+    res.json(items);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
 
-// Get all recipes
-app.get('/recipeList', async (req, res) => {
-  try {
-    await client.connect();
-    const collection = client.db(process.env.dbName).collection(process.env.dbCollectionName);
-    const results = await collection.find({},{ projection: { _id: 0 } }).toArray();
-
-    if (results.length === 0) {
-      return res.status(200).json({ message: 'No results found' });
-    }
-
-    res.json(results);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
 
 // Start Express server to listen for API connections
 app.listen(port, () => console.log(`API listening at http://localhost:${port}/`))
