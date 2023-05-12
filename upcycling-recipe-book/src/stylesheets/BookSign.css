@@ -1,11 +1,11 @@
-#bookImg{
+/* #bookImg{
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 100vh;
 }
 
-img {
+#bookImg img {
   max-width: 100%;
   height: auto;
-}
+} */

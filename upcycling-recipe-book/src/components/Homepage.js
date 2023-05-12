@@ -16,7 +16,7 @@ function Homepage() {
             <TheHeader></TheHeader>
             <HeroSection></HeroSection>
             <Gallery></Gallery>
-            
+            <BookSign></BookSign>
 
             <footer></footer>
         </div>
